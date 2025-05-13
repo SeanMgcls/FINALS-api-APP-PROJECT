@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/magcalas/posts")
-@CrossOrigin(origins = "http://localhost:5173") // Allow requests from the frontend
+@CrossOrigin(origins = {"http://localhost:5173", "https://finals-frontend-app-project.onrender.com"}) // Allow requests from the frontend
 public class PostController {
 
     @Autowired
