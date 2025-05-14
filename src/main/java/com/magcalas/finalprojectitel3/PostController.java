@@ -1,7 +1,5 @@
 package com.magcalas.finalprojectitel3;
 
-import com.magcalas.finalprojectitel3.Post;
-import com.magcalas.finalprojectitel3.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,6 +27,12 @@ public class PostController {
     public Post createPost(@RequestBody Post post) {
         post.setTimestamp(java.time.LocalDateTime.now());
         return postRepository.save(post);
+    }
+
+    @PostMapping("/bulk")
+    public List<Post> createBulkPosts(@RequestBody List<Post> posts) {
+        posts.forEach(post -> post.setTimestamp(java.time.LocalDateTime.now()));
+        return postRepository.saveAll(posts);
     }
 
     @PutMapping("/{id}")
